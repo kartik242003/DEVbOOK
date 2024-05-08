@@ -17,15 +17,15 @@ app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/posts', require('./routes/api/posts'));
 
 // Serve Static assets in production
-if (process.env.NODE_ENV === 'production') {
+const _dirname = path.dirname("");
+const buildpath = path.join(_dirname,"./client/build");
+
   // Set Static Folder
-  app.use(express.static('client/build'));
+  app.use(express.static(buildpath));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
-
+app.get('/',(req,res) => {
+  res.send('go');
+})
 // SERVER
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));

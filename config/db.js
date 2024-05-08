@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
-const config = require('config');
-const db = config.get('mongoURI');
+// const config = require('config');
+// const db = config.get('mongoURI');
 
 // Connection to MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect(db, {
+    await mongoose.connect("mongodb+srv://kartik0739be21:atlas@cluster0.vkf5rfk.mongodb.net/devBook", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+
       // useCreateIndex: true,
       // useFindAndModify: false,
     });
